@@ -1,0 +1,94 @@
+
+    <div class="container">
+        <div class="row row-content">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#">Home</a></li>
+                   <li class="active">Booking</li>
+               </ul>
+            </div>
+            
+           <div class="col-xs-12" ng-if="showBooking">
+                <h3> You have booked a free evaluation.</h3>
+                <p>Only the latest booking will be taken into account</p>
+               {{customer.firstname}} {{customer.lastname}} {{customer.email}}
+              <ul class="list-unstyled">
+                        <li ng-repeat="booking in customer.bookings | orderBy:'-id'">
+                             <span>Year: {{booking.year}}</span>
+                             <span>Month: {{booking.month}}</span>
+                             <span>Day:   {{booking.day}}</span>
+                             <span>Time:{{booking.time}}</span>
+                        </li>
+                 </ul>
+               
+            </div>
+            
+            <div class="col-xs-12">
+               <h3>Booking</h3>
+            </div>            
+              <div class="col-xs-12">
+                  <p>We offer you a free evaluation of the painting needs of your car. We can also discuss of special painting jobs and we always make your a detailed offer of the paint jobs you wish to come true. Use the form below to book a date for the evaluation. We get back to you to corfirm your reservation.</p>
+            </div>
+        </div>
+
+        <div class="row row-content">
+           <div class="col-xs-12">
+              <h3>Book a free evaluation</h3> 
+           </div>
+            <div class="col-xs-12 col-sm-12">
+                <form class="form-horizontal " role="form" name="bookingForm" ng-submit="doBooking()" novalidate>
+                   
+                    <div class="form-group">
+                         
+                        <label for="year" class="col-sm-1 control-label">Year</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="year" name="year" placeholder="" ng-model="newbooking.year" required>
+                                <option value=2016>2016</option>
+                                <option value=2017>2017</option>
+                            </select>
+                        </div>
+                        
+                        <label for="month" class="col-sm-1 control-label">Month</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="month" name="month" placeholder="" ng-model="newbooking.month" required>
+                                <option ng-repeat = "n in [1,2,3,4,5,6,7,8,9,10,11,12]" value={{n}}>{{n}}</option>
+                            </select>
+                        </div>
+                        
+                                       
+                        <label for="day" class="col-xs-12 col-sm-1 control-label">Day</label>
+                        <div class="col-xs-12 col-sm-2">
+                            <select class="form-control" id="day" name="day" placeholder="" ng-model="newbooking.day" required >
+                                <option ng-repeat = "n in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]" value={{n}}>{{n}}</option>
+                            </select>
+                        </div>
+                            
+                        <label for="time" class="col-xs-12 col-sm-1 control-label">Time</label>
+                        <div class="col-sm-2">
+                           <select class="form-control" id="time" name="time" placeholder="" ng-model="newbooking.time" required>
+                                <option value="8-9">8-9</option>
+                                <option value="9-10">9-10</option>
+                                <option value="10-11">10-11</option>
+                                <option value="11-12">11-12</option>
+                                <option value="12-13">12-13</option>
+                                <option value="13-14">13-14</option>
+                                <option value="14-15">14-15</option>
+                                <option value="15-16">15-16</option>
+                            </select>
+                        </div>                        
+                        
+                    </div> 
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-2">
+                            <button type="submit" class="btn btn-primary" ng-disabled="bookingForm.$invalid">Send Booking</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+             
+       </div>
+        
+
+    </div>
